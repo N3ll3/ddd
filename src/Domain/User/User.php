@@ -15,30 +15,48 @@ class User implements JsonSerializable
     /**
      * @var string
      */
-    private $username;
+    private $nom;
 
     /**
      * @var string
      */
-    private $firstName;
+    private $email;
 
     /**
      * @var string
      */
-    private $lastName;
+    private $adresse;
+    
+    /**
+     * @var int
+     */
+    private $code_postal;
 
     /**
-     * @param int|null  $id
-     * @param string    $username
-     * @param string    $firstName
-     * @param string    $lastName
+     * @var string
      */
-    public function __construct(?int $id, string $username, string $firstName, string $lastName)
+    private $ville;
+
+    /**
+     * @var int
+     */
+    private $id_client;
+
+
+    /**
+     * 
+     * @param integer|null $id
+     * @param string $nom
+     * @param string $email
+     * @param string $adresse
+     * @param integer $code_postal
+     * @param string $ville
+     * @param integer $id_client
+     */
+    public function __construct(?int $id, string $nom,string $email, string $adresse, int $code_postal, string $ville, int $id_client)
     {
         $this->id = $id;
-        $this->username = strtolower($username);
-        $this->firstName = ucfirst($firstName);
-        $this->lastName = ucfirst($lastName);
+        $this->nom = strtolower($nom);      
     }
 
     /**
@@ -52,26 +70,56 @@ class User implements JsonSerializable
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getNom(): string
     {
-        return $this->username;
+        return $this->nom;
     }
 
     /**
+     *
+     *
      * @return string
      */
-    public function getFirstName(): string
-    {
-        return $this->firstName;
+    public function getEmail(): string {
+        return $this->email;
     }
 
     /**
+     * Undocumented function
+     *
      * @return string
      */
-    public function getLastName(): string
-    {
-        return $this->lastName;
+    public function getAdresse():string {
+        return $this->adresse;
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return integer
+     */
+    public function getCodePostal():int {
+        return $this->code_postal;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
+    public function getVille():string {
+        return $this->ville;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return integer
+     */
+    public function getIdClient():int {
+        return $this->id_client;
+    }
+
 
     /**
      * @return array
@@ -80,9 +128,12 @@ class User implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            'username' => $this->username,
-            'firstName' => $this->firstName,
-            'lastName' => $this->lastName,
+            'nom' => $this->nom,
+            'email' => $this->email,
+            'adresse' => $this->adresse,
+            'code_postal' => $this->code_postal,
+            'ville' => $this->ville,
+            'id_client' => $this->id_client,
         ];
     }
 }
